@@ -56,6 +56,13 @@ describe Array do
         end
     end
 
+    describe "#stock_picker" do 
+        let(:prices) {[2.33, 3.45, 6.97, 1.23, 0.67]}
 
+        it "Return the indices of the most profitable pair of days" do
+            expect(prices.stock_picker).to eq([0, 2])
+        end
+
+    end
 
 end

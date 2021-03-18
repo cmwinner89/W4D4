@@ -39,4 +39,20 @@ class Array
         transposed
     end
 
+    def stock_picker
+        profits = []
+        best_prof = self[1] - self[0]
+
+        self.each_with_index do |el1, idx1|
+            self.each_with_index do |el2, idx2|
+                if idx2 > idx1
+                    if el2 - el1 > best_prof
+                        best_prof = el2 - el1
+                        profits = [idx1, idx2]
+                    end
+                end
+            end
+        end
+        profits
+    end
 end
