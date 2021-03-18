@@ -20,7 +20,8 @@ describe Array do
         
         context "if the two elements sum is zero" do 
             it "should add the indices of the two elements in a new array" do 
-                expect(arr.two_sum).to contain_exactly([[0,4],[2,3]])
+                arr2 = [-1, 0, 1]
+                expect(arr2.two_sum.first).to contain_exactly(0,2)
             end
             
             it "should sort each subarrays in ascending order" do 
@@ -30,15 +31,12 @@ describe Array do
             it "should sort full array in dictionary order" do 
                 expect(arr.two_sum).to eq([[0,4],[2,3]])
             end 
-
         end
-
-
-
     end
 
-
-
+    describe "#my_transpose" do
+        
+    end
 
 
 
