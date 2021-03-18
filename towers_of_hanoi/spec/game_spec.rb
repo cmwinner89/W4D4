@@ -31,37 +31,30 @@ describe Game do
   end
 
   describe "#move" do 
+    before(:each) { game.move(0,1) }
+
     it "should remove from the end of the stack" do 
-      game.move
       expect(game.stack1).to eq([3,2])
     end
 
     it "should move a disc to another stack" do 
-      game.move
-      expect(game.stack2).to eq([1]).or expect(game.stack3).to eq([1])
+      expect(game.stack2).to eq([1])
     end
 
-    it "should not place a larger disc on a smaller disc" do 
-      stack1 = [3]
-      stack2 = [1]
-      stack3 = [2]
-      game.move
-      
-      expect(game.stack2).not_to eq([1,3])
-      expect(game.stack3).not_to eq([2,3])
+    it "should raise an error if the user tries to place a larger disc on a smaller disc" do 
+      expect { game.move(0,1) }.to raise_error("Invalid move")
     end
   end
 
   describe "#won?" do 
     it "should return true if all the discs are in stack three and in order" do
-      expect(game.stack3)
+      expect(game.stack3).to eq([3,2,1])
+    end
+    it "should return false if stack3 doesn't have all discs in order" do 
+      expect(game.stack3).not_to eq([3,2,1])
     end
   end
 
-
-
-
-  
 end
   
   # allow(double).to receive(:method).and_return(some_value)
