@@ -14,4 +14,32 @@ describe Array do
         expect(arr.my_uniq).to eq([1,2,3,4,5])
        end
     end
+
+    describe "#two_sum" do 
+        let(:arr) { [-1,0,2,-2,1] }
+        
+        context "if the two elements sum is zero" do 
+            it "should add the indices of the two elements in a new array" do 
+                expect(arr.two_sum).to contain_exactly([[0,4],[2,3]])
+            end
+            
+            it "should sort each subarrays in ascending order" do 
+                expect(arr.two_sum.sort).to eq([[0,4],[2,3]])
+            end
+            
+            it "should sort full array in dictionary order" do 
+                expect(arr.two_sum).to eq([[0,4],[2,3]])
+            end 
+
+        end
+
+
+
+    end
+
+
+
+
+
+
 end
