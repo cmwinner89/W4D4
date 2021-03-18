@@ -22,4 +22,21 @@ class Array
         sums
     end
 
+    def my_transpose
+
+        self.each {|row| raise IndexError if row.length != size }
+
+        transposed = []
+
+        self.each_index do |row|
+            rows = []
+            self.each_index do |col|
+                rows << self[col][row]
+            end
+            transposed << rows
+        end
+
+        transposed
+    end
+
 end

@@ -2,17 +2,18 @@ require "array"
 
 describe Array do
 
-    subject(:arr) {[1, 1, 2, 2, 3, 4, 4, 4, 5]}
-
+    
     describe "#my_uniq" do
-       it "should remove duplicate elements"  do
+        subject(:arr) {[1, 1, 2, 2, 3, 4, 4, 4, 5]}
+
+        it "should remove duplicate elements"  do
 
         expect(arr.my_uniq.length).to eq(5)
-       end
+        end
 
-       it "should return the same order" do 
-        expect(arr.my_uniq).to eq([1,2,3,4,5])
-       end
+        it "should return the same order" do 
+            expect(arr.my_uniq).to eq([1,2,3,4,5])
+        end
     end
 
     describe "#two_sum" do 
@@ -35,7 +36,24 @@ describe Array do
     end
 
     describe "#my_transpose" do
+        let(:arr) { [
+            [1,2,3],
+            [4,5,6],
+            [7,8,9]
+        ]}
+
+        it "should transpose rows to columns and columns to rows" do 
+            expect(arr.my_transpose).to eq([
+                [1,4,7],
+                [2,5,8],
+                [3,6,9]
+            ])
+        end
         
+        it "should throw and error if the width and height are not the same" do 
+            arr3 = [[1],[2,3]]
+            expect { arr3.my_transpose }.to raise_error(IndexError)
+        end
     end
 
 
