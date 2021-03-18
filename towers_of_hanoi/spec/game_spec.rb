@@ -15,19 +15,30 @@ require 'game'
 describe Game do 
   subject(:game) { Game.new }
 
-  let(:stack1) { [3,2,1] }
-  let(:stack2) { [] }
-  let(:stack3) { [] }
+
+  describe "#initialize" do
+    describe "should initialize three stack instance variables as array" do 
+
+      it "should initialize stack1 to have items 3, 2, 1" do
+        expect(game.stack1).to eq([3, 2, 1])
+      end
+
+      it "should initialize stack2 and stack3 to be empty arrays" do
+        expect(game.stack2).to eq([])
+        expect(game.stack3).to eq([])
+      end
+    end
+  end
 
   describe "#move" do 
     it "should remove from the end of the stack" do 
       game.move
-      expect(stack1).to eq([3,2])
+      expect(game.stack1).to eq([3,2])
     end
 
     it "should move a disc to another stack" do 
       game.move
-      expect(stack2).to eq([1]).or expect(stack3).to eq([1])
+      expect(game.stack2).to eq([1]).or expect(game.stack3).to eq([1])
     end
 
     it "should not place a larger disc on a smaller disc" do 
@@ -36,13 +47,15 @@ describe Game do
       stack3 = [2]
       game.move
       
-      expect(stack2).not_to eq([1,3])
-      expect(stack3).not_to eq([2,3])
+      expect(game.stack2).not_to eq([1,3])
+      expect(game.stack3).not_to eq([2,3])
     end
   end
 
   describe "#won?" do 
-
+    it "should return true if all the discs are in stack three and in order" do
+      expect(game.stack3)
+    end
   end
 
 
